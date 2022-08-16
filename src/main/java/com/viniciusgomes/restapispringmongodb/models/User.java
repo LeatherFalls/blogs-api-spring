@@ -14,12 +14,12 @@ import java.util.Objects;
 public class User implements Serializable {
     @Id
     private String id;
-    @NotBlank
+    @NotBlank(message = "Field(name) cannot be empty")
     private String name;
-    @NotBlank
-    @Email
+    @NotBlank(message = "Field(email) cannot be empty")
+    @Email(message = "Invalid email")
     private String email;
-    @NotBlank
+    @NotBlank(message = "Password cannot be empty")
     private String password;
 
     public User() {}
