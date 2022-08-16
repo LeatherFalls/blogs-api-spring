@@ -1,4 +1,4 @@
-package com.viniciusgomes.restapispringmongodb.controllers;
+package com.viniciusgomes.restapispringmongodb.repositories;
 
 import com.viniciusgomes.restapispringmongodb.models.User;
 import org.springframework.data.mongodb.repository.MongoRepository;

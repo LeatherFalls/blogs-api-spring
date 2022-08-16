@@ -1,6 +1,6 @@
 package com.viniciusgomes.restapispringmongodb.services;
 
-import com.viniciusgomes.restapispringmongodb.controllers.UserRepository;
+import com.viniciusgomes.restapispringmongodb.repositories.UserRepository;
 import com.viniciusgomes.restapispringmongodb.dto.UserDTO;
 import com.viniciusgomes.restapispringmongodb.services.exception.ObjectNotFoundException;
 import com.viniciusgomes.restapispringmongodb.models.User;
