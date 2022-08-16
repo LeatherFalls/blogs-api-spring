@@ -1,5 +1,6 @@
 package com.viniciusgomes.restapispringmongodb.controllers;
 
+import com.viniciusgomes.restapispringmongodb.dto.UserDTO;
 import com.viniciusgomes.restapispringmongodb.models.User;
 import com.viniciusgomes.restapispringmongodb.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value="/users")
@@ -23,8 +25,9 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> findAll() {
+    public ResponseEntity<List<UserDTO>> findAll() {
         List<User> users = service.findAll();
-        return ResponseEntity.ok().body(users);
+        List<UserDTO> usersDto = users.stream().map(user -> new UserDTO(user)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(usersDto);
     }
 }
