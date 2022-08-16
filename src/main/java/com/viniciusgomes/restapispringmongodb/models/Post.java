@@ -1,5 +1,6 @@
 package com.viniciusgomes.restapispringmongodb.models;
 
+import com.viniciusgomes.restapispringmongodb.dto.AuthorDTO;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -22,14 +23,17 @@ public class Post implements Serializable {
     private String title;
     @NotBlank
     private String content;
+    @NotBlank
+    private AuthorDTO author;
 
     public Post() {}
 
-    public Post(String id, Date date, String title, String content) {
+    public Post(String id, Date date, String title, String content, AuthorDTO author) {
         this.id = id;
         this.date = date;
         this.title = title;
         this.content = content;
+        this.author = author;
     }
 
     @Override
