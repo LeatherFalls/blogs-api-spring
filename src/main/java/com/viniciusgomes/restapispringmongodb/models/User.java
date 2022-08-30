@@ -2,11 +2,14 @@ package com.viniciusgomes.restapispringmongodb.models;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Data
@@ -21,6 +24,9 @@ public class User implements Serializable {
     private String email;
     @NotBlank(message = "Password cannot be empty")
     private String password;
+
+    @DBRef(lazy = true)
+    private List<Post> posts = new ArrayList<>();
 
     public User() {}
 
