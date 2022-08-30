@@ -1,6 +1,7 @@
 package com.viniciusgomes.restapispringmongodb.config;
 
 import com.viniciusgomes.restapispringmongodb.dto.AuthorDTO;
+import com.viniciusgomes.restapispringmongodb.dto.CommentDTO;
 import com.viniciusgomes.restapispringmongodb.models.Post;
 import com.viniciusgomes.restapispringmongodb.models.User;
 import com.viniciusgomes.restapispringmongodb.repositories.PostRepository;
@@ -39,6 +40,13 @@ public class Instantiation implements CommandLineRunner {
 
         Post post1 = new Post(null, sdf.parse("21/03/2022"), "Partiu viagem", "Vou viajar para São Paulo", new AuthorDTO(maria));
         Post post2 = new Post(null, sdf.parse("10/04/2022"), "Bom dia!", "Que belo dia!!", new AuthorDTO(maria));
+
+        CommentDTO comment1 = new CommentDTO("Boa viagem!", sdf.parse("21/03/2022"), new AuthorDTO(alex));
+        CommentDTO comment2 = new CommentDTO("Aproveite!", sdf.parse("21/03/2022"), new AuthorDTO(bob));
+        CommentDTO comment3 = new CommentDTO("Tenha um bom dia!", sdf.parse("10/04/2022"), new AuthorDTO(alex));
+
+        post1.getComments().addAll(Arrays.asList(comment1, comment2));
+        post2.getComments().addAll(Arrays.asList(comment3));
 
         postRepository.save(post1);
         postRepository.save(post2);

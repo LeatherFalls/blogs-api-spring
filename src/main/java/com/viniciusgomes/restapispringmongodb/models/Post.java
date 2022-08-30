@@ -1,6 +1,7 @@
 package com.viniciusgomes.restapispringmongodb.models;
 
 import com.viniciusgomes.restapispringmongodb.dto.AuthorDTO;
+import com.viniciusgomes.restapispringmongodb.dto.CommentDTO;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -8,7 +9,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Data
@@ -25,6 +28,8 @@ public class Post implements Serializable {
     private String content;
     @NotBlank
     private AuthorDTO author;
+
+    private List<CommentDTO> comments = new ArrayList<>();
 
     public Post() {}
 
