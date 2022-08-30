@@ -1,6 +1,7 @@
 package com.viniciusgomes.restapispringmongodb.controllers;
 
 import com.viniciusgomes.restapispringmongodb.dto.UserDTO;
+import com.viniciusgomes.restapispringmongodb.models.Post;
 import com.viniciusgomes.restapispringmongodb.models.User;
 import com.viniciusgomes.restapispringmongodb.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,5 +61,11 @@ public class UserController {
     public ResponseEntity<Void> delete(@PathVariable String id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User user = service.findById(id);
+        return ResponseEntity.ok().body(user.getPosts());
     }
 }
