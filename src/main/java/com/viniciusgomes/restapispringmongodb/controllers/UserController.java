@@ -13,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
@@ -64,7 +65,7 @@ public class UserController {
     }
 
     @GetMapping(value = "/{id}/posts")
-    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+    public ResponseEntity<Set<Post>> findPosts(@PathVariable String id) {
         User user = service.findById(id);
         return ResponseEntity.ok().body(user.getPosts());
     }

@@ -9,10 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Data
 @Document
@@ -29,7 +26,7 @@ public class Post implements Serializable {
     @NotBlank
     private AuthorDTO author;
 
-    private List<CommentDTO> comments = new ArrayList<>();
+    private Set<CommentDTO> comments = new HashSet<>();
 
     public Post() {}
 
